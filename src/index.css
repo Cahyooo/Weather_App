@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,html, #root{
+    z-index: 10;
+    position: relative;
+}
+
+html {
+    height: 100%;
+    /* overflow: hidden; */
+    overflow-x: hidden;
+}
+
+body {
+    height: 100%;
+    /* background-color: rgb(31,40,58); */
+}
+
+#root {
+    height: 90%;
+}
