@@ -3,7 +3,7 @@ const Header = ({ location }) => {
     return (
       <div className="flex">
         <svg
-          className="w-7 h-7 lg:w-9 lg:h-9 lg:ml-1 translate-y-1"
+          className="w-7 h-7 lg:w-9 lg:h-9 lg:ml-1 translate-y-1 -translate-x-1"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -44,46 +44,55 @@ const Header = ({ location }) => {
   };
 
   const SearchBar = () => {
+    const onSubmit = (e) => {
+      e.preventDefault();
+    }
+
     return (
       <section className="bg-[#1F293B] h-10 ml-5 rounded-lg flex-[1]">
-        <input
-          type="text"
-          className="bg-[#1F293B] h-10 w-full focus:outline-none pl-12 text-sm rounded-lg"
-          placeholder="Search City..."
-        />
-        <svg
-          width="64px"
-          height="64px"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          stroke="#ffffff"
-          className="w-6 h-6 absolute -translate-y-8 translate-x-3"
-        >
-          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-          <g
-            id="SVGRepo_tracerCarrier"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></g>
-          <g id="SVGRepo_iconCarrier">
-            {" "}
-            <path
-              d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-              stroke="#e8e8e8"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>{" "}
-          </g>
-        </svg>
+        <form action="/" method="POST" className="flex" onSubmit={onSubmit}>
+          <button type="submit" className="bg-[#1F293B] h-10 w-14 rounded-lg">
+            <svg
+              width="64px"
+              height="64px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#ffffff"
+              className="w-6 h-6 absolute -translate-y-3 translate-x-3"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <path
+                  d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                  stroke="#e8e8e8"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>{" "}
+              </g>
+            </svg>
+          </button>
+          <input
+            type="text"
+            className="bg-[#1F293B] h-10 w-full focus:outline-none text-sm rounded-lg"
+            placeholder="Search City..."
+            name="city"
+          />
+        </form>
       </section>
     );
   };
 
   const GithubShare = () => {
     return (
-      <a href="">
+      <a href="https://github.com/Cahyooo/Weather_App">
         <div className="h-10 bg-white w-[15vw] lg:w-[11vw] flex ml-5 rounded-md items-center">
           <svg
             viewBox="0 0 20 20"

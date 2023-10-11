@@ -1,15 +1,20 @@
-import foto from "./img/fog.png";
+import useIcon from "./useHooks/useIcon";
 
 const TodayOverview = ({ weatherInfo, time }) => {
   const nowInfo = weatherInfo[0];
   const weather = nowInfo.weather[0];
-  console.log(weather);
-  console.log(nowInfo);
+  const jam = time.split(" ")[1].split(":")[0];
+  //   console.log(weather);
+  //   console.log(nowInfo);
 
   const WeatherInformation = () => {
     return (
       <div className="bg-[#1F293B] h-[350px] rounded-lg border text-2xl w-[230px]">
-        <img src={foto} alt="" className="h-[100px] ml-12 mt-7 mb-5" />
+        <img
+          src={useIcon(weather.main, jam)}
+          alt=""
+          className="h-[100px] ml-12 mt-7 mb-5"
+        />
         <div className="pl-8 mb-5">
           <span className="font-semibold">{nowInfo.main.temp}°C</span> <br />
           <span className="text-[18px] opacity-80 -translate-y-10">
@@ -65,7 +70,6 @@ const TodayOverview = ({ weatherInfo, time }) => {
   };
 
   const OtherInformation = () => {
-
     const Box = () => {
       return (
         <div className="bg-[#1F293B] w-[220px] h-[165px] rounded-lg"></div>

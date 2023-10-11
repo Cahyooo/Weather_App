@@ -22,7 +22,7 @@ function App() {
     });
   }, []);
   // console.log(weatherInfo);
-  console.log(location);
+  // console.log(location);
   // console.log(weatherInfoForChild);
   // console.log(dataHourly);
 
@@ -33,12 +33,12 @@ function App() {
           <p>Getting API Data...</p>
         </div>
       ) : (
-        <article className="bg-[#0F172A] w-auto h-[93vh] rounded-xl mx-10 my-5 text-white px-4 lg:px-7">
+        <article className="bg-[#0F172A] w-auto pb-10 rounded-xl mx-10 my-5 text-white px-4 lg:px-7">
           <Header location={location} />
           <h1 className="mb-5 text-2xl">Today Overview</h1>
           <TodayOverview weatherInfo={dataHourly} time={location.localtime} />
           <h5 className="my-5 text-2xl text-bold ">Next 5 Days</h5>
-          <ForecastOverview />
+          <ForecastOverview time={location.localtime} data={dataHourly} />
         </article>
       )}
     </main>

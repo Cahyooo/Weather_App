@@ -1,11 +1,21 @@
 import axios from "axios";
 
-const city = "London";
+//?
+//! KEY API,FILE TIDAK ADA JIKA DI PUSH KE GITHUB
+import key from './key/key.json'
+//?
+// const response = await axios.post("/", {
+//   city,
+// });
+// const data = await response.json();
+
+
+const city = "Jakarta";
 
 export const getGeo = (callback) => {
   axios
     .get(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=d746c978bcd31d9b89b5be1a420a1a22`
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${key.keyWeather2}`
     )
     .then((res) => {
       callback(res);
@@ -17,7 +27,7 @@ export const getGeo = (callback) => {
 export const getWeather = (callback) => {
   axios
     .get(
-      `http://api.weatherapi.com/v1/current.json?key=5d9bbbe38d40448ea23160911230310&q=${city}`
+      `http://api.weatherapi.com/v1/current.json?key=${key.keyWeather1}&q=${city}`
     )
     .then((res) => {
       const data = {
@@ -47,7 +57,7 @@ function fetchData(callback) {
 fetchData(() => {
   axios
     .get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=d746c978bcd31d9b89b5be1a420a1a22&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key.keyWeather2}&units=metric`
     )
     .then((res) => {
       callback(res);
