@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useIcon from "./useHooks/useIcon";
 
 const ForecastOverview = ({ time, data }) => {
@@ -49,26 +50,96 @@ const ForecastOverview = ({ time, data }) => {
   const day4 = getDate(4);
   const day5 = getDate(5);
 
-  const BoxFilter = ({ children, active = false }) => {
+  const BoxFilter = ({ children, info, activeFilter, setFilter }) => {
+    const onClick = () => {
+      setFilter(info);
+    };
+
     return (
       <div
         className={`${
-          active ? "bg-white text-black" : "bg-[#1F293B]"
+          activeFilter === info ? "bg-white text-black" : "bg-[#1F293B]"
         } rounded-sm cursor-pointer ml-5 mb-5`}
+        onClick={onClick}
       >
         <p className="text-center px-4 py-1">{children}</p>
       </div>
     );
   };
 
-  const Box = () => {
+  const [activeFilter, setActiveFilter] = useState("all_day");
+  const FilterComponent = () => {
     return (
-      data &&
-      data.map((d) => {
+      <div className="flex">
+        <BoxFilter
+          info="all_day"
+          activeFilter={activeFilter}
+          setFilter={setActiveFilter}
+        >
+          All Day
+        </BoxFilter>
+        <BoxFilter
+          info={day1}
+          activeFilter={activeFilter}
+          setFilter={setActiveFilter}
+        >
+          {day1}
+        </BoxFilter>
+        <BoxFilter
+          info={day2}
+          activeFilter={activeFilter}
+          setFilter={setActiveFilter}
+        >
+          {day2}
+        </BoxFilter>
+        <BoxFilter
+          info={day3}
+          activeFilter={activeFilter}
+          setFilter={setActiveFilter}
+        >
+          {day3}
+        </BoxFilter>
+        <BoxFilter
+          info={day4}
+          activeFilter={activeFilter}
+          setFilter={setActiveFilter}
+        >
+          {day4}
+        </BoxFilter>
+        <BoxFilter
+          info={day5}
+          activeFilter={activeFilter}
+          setFilter={setActiveFilter}
+        >
+          {day5}
+        </BoxFilter>
+      </div>
+    );
+  };
+
+  const Box = () => {
+    const getFilter = activeFilter;
+    let queryFound;
+    if (getFilter !== "all_day") {
+      const getFilterTanggal = getFilter.split(" ")[0];
+      queryFound = data.map((d) => {
+        if (d.dt_txt.split(" ")[0].split("-")[2] === getFilterTanggal) {
+          return d;
+        }
+      });
+      queryFound = queryFound.filter(item => item !== undefined);
+    } else {
+      queryFound = data;
+    }
+    // console.log(queryFound);
+
+    return (
+      queryFound && 
+      queryFound.map((d) => {
         const weather = d.weather[0];
         // console.log(weather.main);
         const celcius = d.main.temp;
-        console.log(weather.description)
+        // console.log(weather.description)
 
         const waktu = d.dt_txt;
         const tahunBulanTanggal = waktu.split(" ")[0];
@@ -76,8 +147,12 @@ const ForecastOverview = ({ time, data }) => {
         const tahun = tahunBulanTanggal.split("-")[0];
         const bulan = month[tahunBulanTanggal.split("-")[1]];
         const tanggal = tahunBulanTanggal.split("-")[2];
+
         return (
-          <div className="bg-[#1F293B] h-[80px] w-[250px] rounded-md flex">
+          <div
+            key={waktu}
+            className="bg-[#1F293B] h-[80px] w-[250px] rounded-md flex"
+          >
             <div className="ml-4 mt-2 mr-7">
               <span className="text-sm opacity-50">{`${tanggal} ${bulan} ${tahun}`}</span>{" "}
               <br />
@@ -98,18 +173,11 @@ const ForecastOverview = ({ time, data }) => {
       })
     );
   };
-  console.log(data);
+  // console.log(data);
 
   return (
     <>
-      <div className="flex">
-        <BoxFilter active={false}>All Day</BoxFilter>
-        <BoxFilter>{day1}</BoxFilter>
-        <BoxFilter>{day2}</BoxFilter>
-        <BoxFilter>{day3}</BoxFilter>
-        <BoxFilter>{day4}</BoxFilter>
-        <BoxFilter>{day5}</BoxFilter>
-      </div>
+      <FilterComponent />
       <div className="grid lg:grid-cols-4 gap-4">
         <Box></Box>
       </div>

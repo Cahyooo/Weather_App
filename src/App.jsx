@@ -33,7 +33,7 @@ function App() {
           <p>Getting API Data...</p>
         </div>
       ) : (
-        <article className="bg-[#0F172A] w-auto pb-10 rounded-xl mx-10 my-5 text-white px-4 lg:px-7">
+        <article className="bg-[#0F172A] w-auto pb-10 rounded-xl mx-10 my-5 text-white px-4 lg:px-7 xl:px-14">
           <Header location={location} />
           <h1 className="mb-5 text-2xl">Today Overview</h1>
           <TodayOverview weatherInfo={dataHourly} time={location.localtime} />

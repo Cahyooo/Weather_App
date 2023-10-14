@@ -7,7 +7,7 @@ import Sunny from "../img/sunny.png";
 import Night from "../img/clear_night.png";
 
 const useIcon = (type, time) => {
-  console.log(time);
+  // console.log(time);
   if (type === "Clouds") {
     if (time >= 19 || time <= 5) {
       return Clouds_night;
