@@ -59,7 +59,7 @@ const ForecastOverview = ({ time, data }) => {
       <div
         className={`${
           activeFilter === info ? "bg-white text-black" : "bg-[#1F293B]"
-        } rounded-sm cursor-pointer ml-5 mb-5`}
+        } rounded-sm cursor-pointer ml-2 mb-5`}
         onClick={onClick}
       >
         <p className="text-center px-4 py-1">{children}</p>

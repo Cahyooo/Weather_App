@@ -79,7 +79,7 @@ const TodayOverview = ({ weatherInfo, time }) => {
     };
 
     return (
-      <div className="h-[350px] ml-5 grid md:grid-cols-2 2xl:grid-cols-3 xl:grid-cols-2 gap-[15px] ">
+      <div className="h-[350px] grid md:grid-cols-2 2xl:grid-cols-3 xl:grid-cols-2 gap-[15px] ">
         <Box>
           {/* <svg
           className="w-9 h-9"
