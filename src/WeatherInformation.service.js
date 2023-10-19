@@ -2,15 +2,19 @@ import axios from "axios";
 
 //?
 //! KEY API,FILE TIDAK ADA JIKA DI PUSH KE GITHUB
-import key from './key/key.json'
+import key from "./key/key.json";
 //?
-// const response = await axios.post("/", {
-//   city,
-// });
-// const data = await response.json();
 
+const data = localStorage.getItem('City');
+// console.log(data);
 
-const city = "Jakarta";
+let city;
+if(data){
+  city = data
+} else {
+  city = "Jakarta";
+}
+
 
 export const getGeo = (callback) => {
   axios
@@ -42,27 +46,26 @@ export const getWeather = (callback) => {
 };
 
 export const getWeatherHourly = (callback) => {
+  let lat;
+  let lon;
+  function fetchData(callback) {
+    getGeo((data) => {
+      const object = data.data[0];
+      lat = object.lat;
+      lon = object.lon;
+      callback(); // Panggil callback setelah selesai
+    });
+  }
 
-let lat;
-let lon;
-function fetchData(callback) {
-  getGeo((data) => {
-    const object = data.data[0];
-    lat = object.lat;
-    lon = object.lon;
-    callback(); // Panggil callback setelah selesai
+  fetchData(() => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key.keyWeather2}&units=metric`
+      )
+      .then((res) => {
+        callback(res);
+        // console.log(res);
+      })
+      .catch((err) => console.log(err));
   });
-}
-
-fetchData(() => {
-  axios
-    .get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key.keyWeather2}&units=metric`
-    )
-    .then((res) => {
-      callback(res);
-      // console.log(res);
-    })
-    .catch((err) => console.log(err));
-});
 };

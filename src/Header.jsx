@@ -1,3 +1,6 @@
+import axios from "axios";
+import { useState } from "react";
+
 const Header = ({ location }) => {
   const LocationInfo = () => {
     return (
@@ -44,13 +47,15 @@ const Header = ({ location }) => {
   };
 
   const SearchBar = () => {
-    const onSubmit = (e) => {
-      e.preventDefault();
-    }
+    const [value, setValue] = useState("");
+    const handleSubmit = () => {
+      localStorage.setItem("City", value);
+      setValue("");
+    };
 
     return (
       <section className="bg-[#1F293B] h-10 ml-5 rounded-lg flex-[1]">
-        <form action="/" method="POST" className="flex" onSubmit={onSubmit}>
+        <form method="" action="" className="flex" onSubmit={handleSubmit}>
           <button type="submit" className="bg-[#1F293B] h-10 w-14 rounded-lg">
             <svg
               width="64px"
@@ -83,7 +88,8 @@ const Header = ({ location }) => {
             type="text"
             className="bg-[#1F293B] h-10 w-full focus:outline-none text-sm rounded-lg"
             placeholder="Search City..."
-            name="city"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
           />
         </form>
       </section>

@@ -59,10 +59,10 @@ const ForecastOverview = ({ time, data }) => {
       <div
         className={`${
           activeFilter === info ? "bg-white text-black" : "bg-[#1F293B]"
-        } rounded-sm cursor-pointer ml-2 mb-5`}
+        } rounded-sm cursor-pointer ml-5 mb-5`}
         onClick={onClick}
       >
-        <p className="text-center px-4 py-1">{children}</p>
+        <p className="text-center px-4 py-1 whitespace-nowrap">{children}</p>
       </div>
     );
   };
@@ -70,7 +70,7 @@ const ForecastOverview = ({ time, data }) => {
   const [activeFilter, setActiveFilter] = useState("all_day");
   const FilterComponent = () => {
     return (
-      <div className="flex">
+      <div className="flex overflow-auto mb-5">
         <BoxFilter
           info="all_day"
           activeFilter={activeFilter}
@@ -143,7 +143,7 @@ const ForecastOverview = ({ time, data }) => {
 
         const waktu = d.dt_txt;
         const tahunBulanTanggal = waktu.split(" ")[0];
-        const jam = waktu.split(" ")[1];
+        const jam = waktu.split(" ")[1].substring(0,5);
         const tahun = tahunBulanTanggal.split("-")[0];
         const bulan = month[tahunBulanTanggal.split("-")[1]];
         const tanggal = tahunBulanTanggal.split("-")[2];
@@ -178,7 +178,7 @@ const ForecastOverview = ({ time, data }) => {
   return (
     <>
       <FilterComponent />
-      <div className="grid lg:grid-cols-4 gap-4">
+      <div className="grid min-[1200px]:grid-cols-4 gap-4 min-[885px]:grid-cols-3 grid-cols-2 max-[550px]:flex max-[550px]:flex-col max-[550px]:items-center max-[550px]:justify-center">
         <Box></Box>
       </div>
     </>
