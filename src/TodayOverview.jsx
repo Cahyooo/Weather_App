@@ -84,7 +84,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
     const textLayout = "mt-9 max-[1370px]:mt-4 max-[1111px]:mt-9 opacity-60 mb-2 max-[860px]:mt-4";
 
     return (
-      <div className="h-[350px] mx-5 grid grid-cols-3 max-[1370px]:grid-cols-2 gap-[15px] max-[860px]:grid-cols-1 max-[860px]:mr-5 max-[600px]:mr-30 max-[600px]:ml-0 max-[565px]:mx-10 max-[565px]:h-auto max-[565px]:mb-5 max-[355px]:mx-0">
+      <div className="h-[350px] mx-5 grid grid-cols-3 max-[1370px]:grid-cols-2 gap-[15px] max-[900px]:mr-0 max-[900px]:ml-1 max-[860px]:grid-cols-1 max-[860px]:mr-5 max-[600px]:mr-30 max-[600px]:ml-0 max-[565px]:mx-10 max-[565px]:h-auto max-[565px]:mb-5 max-[355px]:mx-0">
         <Box>
           <div className={svgBoxClass}>
             <svg
