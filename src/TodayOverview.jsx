@@ -10,7 +10,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
 
   const WeatherInformation = () => {
     return (
-      <div className="bg-[#1F293B] h-[350px] rounded-lg border text-2xl w-[230px]">
+      <div className="bg-[#1F293B] h-[350px] rounded-lg border text-2xl w-[230px] max-[1111px]:mb-5 max-[1111px]:mr-10 max-[565px]:mr-0">
         <img
           src={useIcon(weather.main, jam)}
           alt=""
@@ -73,7 +73,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
   const OtherInformation = () => {
     const Box = ({ children }) => {
       return (
-        <div className="bg-[#1F293B] w-[220px] 2xl:h-[165px] rounded-lg flex p-2">
+        <div className="bg-[#1F293B] hover:bg-[#38496a] duration-300 opacity-90 w-[220px] h-[165px] max-[1370px]:h-[107px] max-[1111px]:h-[165px] max-[860px]:h-[108px] rounded-lg flex p-2">
           {children}
         </div>
       );
@@ -81,9 +81,10 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
 
     const svgClassName = "w-8 h-8 ml-6";
     const svgBoxClass = "flex item-center justify-center items-center";
+    const textLayout = "mt-9 max-[1370px]:mt-4 max-[1111px]:mt-9 opacity-60 mb-2 max-[860px]:mt-4";
 
     return (
-      <div className="h-[350px] grid md:grid-cols-2 2xl:grid-cols-3 xl:grid-cols-2 gap-[15px]">
+      <div className="h-[350px] mx-5 grid grid-cols-3 max-[1370px]:grid-cols-2 gap-[15px] max-[860px]:grid-cols-1 max-[860px]:mr-5 max-[600px]:mr-30 max-[600px]:ml-0 max-[565px]:mx-10 max-[565px]:h-auto max-[565px]:mb-5 max-[355px]:mx-0">
         <Box>
           <div className={svgBoxClass}>
             <svg
@@ -118,7 +119,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
             </svg>
           </div>
           <div className="ml-5">
-            <p className="mt-9 opacity-60 mb-2">Wind Speed</p>
+            <p className={textLayout}>Wind Speed</p>
             <p className="text-xl">{weatherInfoDetail.wind_kph} km/h</p>
           </div>
         </Box>
@@ -234,7 +235,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
             </svg>
           </div>
           <div className="ml-5">
-            <p className="mt-9 opacity-60 mb-2">Wind Degree</p>
+            <p className={textLayout}>Wind Degree</p>
             <p className="text-xl">{weatherInfoDetail.humidity}°</p>
           </div>
         </Box>
@@ -272,7 +273,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
             </svg>
           </div>
           <div className="ml-5">
-            <p className="mt-9 opacity-60 mb-2">Wind Speed</p>
+            <p className={textLayout}>Wind Speed</p>
             <p className="text-xl">{weatherInfoDetail.humidity}%</p>
           </div>
         </Box>
@@ -327,7 +328,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
             </svg>
           </div>
           <div className="ml-5">
-            <p className="mt-9 opacity-60 mb-2">Wind Speed</p>
+            <p className={textLayout}>Wind Speed</p>
             <p className="text-xl">{weatherInfoDetail.pressure_mb} hPa</p>
           </div>
         </Box>
@@ -352,7 +353,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
             </svg>
           </div>
           <div className="ml-5">
-            <p className="mt-9 opacity-60 mb-2">Visibility</p>
+            <p className={textLayout}>Visibility</p>
             <p className="text-xl">{weatherInfoDetail.vis_km} km</p>
           </div>
         </Box>
@@ -401,7 +402,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
             </svg>
           </div>
           <div className="ml-5">
-            <p className="mt-9 opacity-60 mb-2">Gust Wind</p>
+            <p className={textLayout}>Gust Wind</p>
             <p className="text-xl">{weatherInfoDetail.gust_kph} km/h</p>
           </div>
         </Box>
@@ -440,14 +441,14 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
     };
 
     return (
-      <div className="bg-[#1F293B] h-[350px] w-[230px] rounded-lg max-[1125px]:mt-5 border px-6 py-6">
+      <div className="bg-[#1F293B] h-[350px] w-[230px] rounded-lg border px-6 py-6">
         <InformationTime />
       </div>
     );
   };
 
   return (
-    <section className="flex justify-between">
+    <section className="flex justify-between max-[1111px]:justify-start flex-wrap max-[565px]:justify-center">
       <WeatherInformation />
       <OtherInformation />
       <TodayForecast />

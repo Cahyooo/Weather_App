@@ -58,7 +58,7 @@ const ForecastOverview = ({ time, data }) => {
     return (
       <div
         className={`${
-          activeFilter === info ? "bg-white text-black" : "bg-[#1F293B]"
+          activeFilter === info ? "bg-white hover:bg-[#bbbbbb] duration-200 text-black" : "bg-[#1F293B] hover:bg-[#303f5b] duration-200"
         } rounded-sm cursor-pointer ml-5 mb-5`}
         onClick={onClick}
       >
@@ -151,7 +151,7 @@ const ForecastOverview = ({ time, data }) => {
         return (
           <div
             key={waktu}
-            className="bg-[#1F293B] h-[80px] w-[250px] rounded-md flex"
+            className="bg-[#1F293B] h-[80px] w-[250px] rounded-md flex box-forecast"
           >
             <div className="ml-4 mt-2 mr-7">
               <span className="text-sm opacity-50">{`${tanggal} ${bulan} ${tahun}`}</span>{" "}

@@ -1,12 +1,11 @@
-import axios from "axios";
 import { useState } from "react";
 
 const Header = ({ location }) => {
   const LocationInfo = () => {
     return (
-      <div className="flex">
+      <div className="flex max-[550px]:mb-5">
         <svg
-          className="w-7 h-7 lg:w-9 lg:h-9 lg:ml-1 translate-y-1 -translate-x-1"
+          className="w-7 h-7 lg:w-9 lg:h-9 lg:ml-1 translate-y-1 -translate-x-1 animate-pulse"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +53,7 @@ const Header = ({ location }) => {
     };
 
     return (
-      <section className="bg-[#1F293B] h-10 ml-5 rounded-lg flex-[1]">
+      <section className="bg-[#1F293B] h-10 ml-5 rounded-lg flex-[1] max-[550px]:ml-0 max-[550px]:order-3">
         <form method="" action="" className="flex" onSubmit={handleSubmit}>
           <button type="submit" className="bg-[#1F293B] h-10 w-14 rounded-lg">
             <svg
@@ -86,7 +85,7 @@ const Header = ({ location }) => {
           </button>
           <input
             type="text"
-            className="bg-[#1F293B] h-10 w-full focus:outline-none text-sm rounded-lg"
+            className="bg-[#1F293B] h-10 w-full focus:outline-none text-sm rounded-lg max-[550px]:w-[75vw] max-[350px]:w-[50vw]"
             placeholder="Search City..."
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -99,14 +98,14 @@ const Header = ({ location }) => {
   const GithubShare = () => {
     return (
       <a href="https://github.com/Cahyooo/Weather_App">
-        <div className="h-10 bg-white w-[15vw] lg:w-[11vw] flex ml-5 rounded-md items-center">
+        <div className="h-10 bg-white hover:bg-[#bbbbbb] duration-300 w-[15vw] lg:w-[11vw] flex ml-5 rounded-md items-center max-[680px]:w-[20vw] max-[550px]:w-[30vw] max-[550px]:mr-[5vw] max-[325px]:mr-0 max-[415px]:w-[35vw] max-[365px]:w-[50vw] max-[365px]:mr-10 max-[365px]:ml-0 max-[365px]:mb-5">
           <svg
             viewBox="0 0 20 20"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             fill="#000000"
-            className="w-8 h-8 lg:w-6 lg:h-6 ml-4"
+            className="max-[1024px]:w-7 max-[1024px]:h-7 max-[725px]:w-5 max-[725px]:h-5 lg:w-6 lg:h-6 ml-4 max-[1350px]:ml-1 max-[550px]:w-8 max-[550px]:h-7"
           >
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
@@ -145,14 +144,14 @@ const Header = ({ location }) => {
               </g>{" "}
             </g>
           </svg>
-          <p className="text-black font-semibold ml-3">Github Code</p>
+          <p className="text-black lineheight font-semibold ml-3 mr-1 max-[1250px]:ml-1 max-[1160px]:text-[14px] max-[1060px]:text-[13px] max-[1024px]:text-[14px] max-[800px]:text-[12px] max-[550px]:text-[14px] ">Github Code</p>
         </div>
       </a>
     );
   };
 
   return (
-    <header className="flex pt-2 mb-5">
+    <header className="flex pt-2 mb-5 flex-wrap">
       <LocationInfo />
       <SearchBar />
       <GithubShare />

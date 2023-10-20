@@ -1,4 +1,3 @@
-import fog from "../img/fog.png";
 import Rain from "../img/rain.png";
 import Rain_night from "../img/rainy_night.png";
 import Clouds from "../img/cloudy_sunny.png";
