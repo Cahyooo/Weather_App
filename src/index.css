@@ -52,7 +52,17 @@ body {
 .box-forecast {
   transform: scale(1);
   transition: 0.7s;
+  -webkit-transition: 0.7s;
+  -moz-transition: 0.7s;
+  -ms-transition: 0.7s;
+  -o-transition: 0.7s;
 }
 .box-forecast:hover {
   transform: scale(1.1);
+}
+
+
+
+.lol  {
+
 }

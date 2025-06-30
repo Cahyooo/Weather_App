@@ -145,7 +145,7 @@ const ForecastOverview = ({ time, data }) => {
         const tahunBulanTanggal = waktu.split(" ")[0];
         const jam = waktu.split(" ")[1].substring(0,5);
         const tahun = tahunBulanTanggal.split("-")[0];
-        const bulan = month[tahunBulanTanggal.split("-")[1]];
+        const bulan = month[tahunBulanTanggal.split("-")[1].split("")[1]];
         const tanggal = tahunBulanTanggal.split("-")[2];
 
         return (

@@ -273,7 +273,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
             </svg>
           </div>
           <div className="ml-5">
-            <p className={textLayout}>Wind Speed</p>
+            <p className={textLayout}>Humidity</p>
             <p className="text-xl">{weatherInfoDetail.humidity}%</p>
           </div>
         </Box>
@@ -328,7 +328,7 @@ const TodayOverview = ({ weatherInfo, time, weatherInfoDetail }) => {
             </svg>
           </div>
           <div className="ml-5">
-            <p className={textLayout}>Wind Speed</p>
+            <p className={textLayout}>Pressure</p>
             <p className="text-xl">{weatherInfoDetail.pressure_mb} hPa</p>
           </div>
         </Box>
